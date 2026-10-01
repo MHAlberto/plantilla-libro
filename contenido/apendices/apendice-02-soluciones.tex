@@ -1,0 +1,38 @@
+\chapter{Soluciones seleccionadas}
+\label{ap:soluciones}
+
+Este apéndice ilustra el nivel de detalle esperado en algunas respuestas. Las otras soluciones quedan como ejercicios para desarrollar en los apuntes.
+
+\section{Áreas y teselaciones}
+
+Para el ejercicio de ángulos \(\pi/2\), \(\pi/4\) y \(\pi/8\) del \cref{cap:triangulos-hiperbolicos}, la suma es \(7\pi/8\). Por tanto, el área es \(\pi-7\pi/8=\pi/8\).
+
+Para el problema \cref{prob:area-triangulo}, la suma de ángulos es
+\[
+  \frac{\pi}{3}+\frac{\pi}{4}+\frac{\pi}{6}
+  =\frac{3\pi}{4},
+\]
+así que el área es \(\pi/4\). El defecto angular es positivo, como debe ocurrir en un triángulo hiperbólico no degenerado.
+
+Para \(\{5,4\}\), se tiene \(1/5+1/4=9/20<1/2\); sí existe una teselación regular hiperbólica. La condición se presentó en \cref{eq:condicion-teselacion}.
+
+\section{Distancias y áreas de superficies}
+
+En \cref{prob:verticales},
+\[
+  d_{\mathbb H}(2i,5i)=\left|\log\frac{5}{2}\right|=\log\frac52.
+\]
+Para \cref{prob:radial}, la fórmula radial da
+\[
+  d_{\mathbb D}(0,1/3)=2\operatorname{artanh}(1/3)
+  =\log\frac{1+1/3}{1-1/3}=\log 2.
+\]
+Una superficie de género \(3\) tiene área \(4\pi(3-1)=8\pi\), por \cref{eq:area-superficie-cerrada}.
+
+\section{Esquema de demostración: traslaciones}
+
+Para comprobar el ejercicio de isometrías del \cref{cap:isometrias}, sea \(w=z+b\), con \(b\in\mathbb R\). Entonces \(x\) se reemplaza por \(x+b\), mientras que \(dx\) y \(y\) permanecen iguales; por ello \((dx^2+dy^2)/y^2\) no cambia. Si \(w=\lambda z\), entonces \(dx_w=\lambda dx\), \(dy_w=\lambda dy\) y \(y_w=\lambda y\), de modo que el factor \(\lambda^2\) se cancela entre numerador y denominador.
+
+\begin{remark}
+Una respuesta útil muestra la fórmula aplicada y la razón por la que puede aplicarse. El resultado numérico aislado rara vez explica qué estructura geométrica se utilizó.
+\end{remark}

@@ -1,0 +1,53 @@
+\chapter{Isometrías y transformaciones de Möbius}
+\label{cap:isometrias}
+
+Una isometría es una transformación que conserva distancias. Las transformaciones de Möbius ofrecen fórmulas concretas para las isometrías de los dos modelos principales del plano hiperbólico. Permiten mover una configuración antes de calcular y ayudan a reconocer qué propiedades dependen del dibujo y cuáles son geométricas \cite{anderson2005,beardon1983}.
+
+\section{Acción en el disco}
+
+Para \(a\in\mathbb D\), la transformación
+\[
+  T_a(z)=\frac{z-a}{1-\overline a z}
+\]
+lleva \(a\) al origen y preserva el disco. Al componerla con una rotación se obtiene la forma general de una isometría que preserva la orientación:
+\[
+  z\longmapsto e^{i\theta}\frac{z-a}{1-\overline a z}.
+\]
+La distancia del disco puede escribirse en términos de una transformación que lleva uno de los puntos al origen:
+\[
+  d_{\mathbb D}(z,w)=2\operatorname{artanh}\left|
+  \frac{z-w}{1-\overline z w}\right|.
+\]
+
+\section{Acción en el semiplano}
+
+Las transformaciones
+\begin{equation}
+  g(z)=\frac{az+b}{cz+d},\qquad a,b,c,d\in\mathbb R,\quad ad-bc=1,
+  \label{eq:accion-mobius}
+\end{equation}
+preservan el semiplano superior y su métrica. Las matrices \(A\) y \(-A\) definen la misma transformación; el grupo de estas acciones se denota \(\mathrm{PSL}(2,\mathbb R)\). Traslaciones horizontales, escalas positivas e inversiones son ejemplos importantes.
+
+\begin{example}[Traslación y escala]
+Las funciones \(z\mapsto z+b\), para \(b\in\mathbb R\), y \(z\mapsto \lambda z\), para \(\lambda>0\), se obtienen como casos de \cref{eq:accion-mobius}. Ambas conservan el semiplano y su métrica.
+\end{example}
+
+\section{El mapa de Cayley}
+
+La aplicación
+\[
+  \phi(z)=i\frac{1+z}{1-z}
+\]
+transforma el disco en el semiplano superior. Por ejemplo, \(\phi(0)=i\); el punto \(1\) de la circunferencia unidad corresponde al punto ideal \(\infty\). La transformación conserva ángulos y distancias hiperbólicas. Por ello se puede trasladar un argumento de un modelo al otro y volver al modelo más cómodo para visualizarlo.
+
+\section{Qué conserva una isometría}
+
+Las isometrías preservan longitudes, ángulos, áreas, geodésicas y la incidencia entre curvas. No preservan necesariamente las distancias euclidianas que aparecen en el dibujo. En particular, un arco circular que se ve curvo puede ser una línea recta intrínseca: es una geodésica para la métrica hiperbólica.
+
+\begin{exercise}
+Comprueba que \(z\mapsto z+b\) preserva \((dx^2+dy^2)/y^2\). Repite el argumento para \(z\mapsto\lambda z\), con \(\lambda>0\).
+\end{exercise}
+
+\begin{remark}
+La palabra “transformación” no implica que cambie la geometría. Una isometría cambia coordenadas o posición, pero deja intactas las magnitudes intrínsecas.
+\end{remark}

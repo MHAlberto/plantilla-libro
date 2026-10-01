@@ -1,0 +1,45 @@
+\chapter{Comparación de modelos y estrategia de trabajo}
+\label{cap:comparacion-modelos}
+
+El disco y el semiplano representan la misma geometría, pero hacen visibles aspectos distintos. Elegir coordenadas convenientes suele simplificar una demostración o un cálculo.
+
+\section{Qué modelo conviene usar}
+
+\begin{table}[htbp]
+  \centering
+  \caption{Dos modelos del plano hiperbólico.}
+  \label{tab:modelos}
+  \small
+  \begin{tabular}{p{0.18\textwidth}p{0.34\textwidth}p{0.34\textwidth}}
+    \toprule
+    Propiedad & Disco de Poincaré & Semiplano superior \\
+    \midrule
+    Dominio & \( |z|<1 \) & \( y>0 \) \\
+    Frontera ideal & \( |z|=1 \) & eje real y \(\infty\) \\
+    Geodésicas & diámetros y arcos ortogonales & verticales y semicírculos \\
+    Ventaja visual & simetría circular & transformaciones matriciales \\
+    \bottomrule
+  \end{tabular}
+\end{table}
+
+El disco resulta cómodo para visualizar configuraciones globales y polígonos ideales. El semiplano es útil para integrar a lo largo de verticales y para aplicar transformaciones de \(\mathrm{PSL}(2,\mathbb R)\). La tabla \cref{tab:modelos} resume las diferencias de coordenadas, no una diferencia geométrica.
+
+\section{Un método para resolver problemas}
+
+Al abordar un ejercicio de geometría hiperbólica, puede servir el siguiente orden:
+\begin{enumerate}
+  \item Identifica si la pregunta trata de longitud, ángulo, área, incidencia o curvatura.
+  \item Escoge el modelo que haga más sencilla la figura o la expresión.
+  \item Usa una isometría para mover puntos a posiciones simples.
+  \item Comprueba qué fórmula métrica corresponde al modelo.
+  \item Escribe la cadena de igualdades y señala las hipótesis.
+  \item Interpreta el resultado en términos geométricos y verifica que tenga sentido en casos límite.
+\end{enumerate}
+
+\section{Cómo seguir leyendo}
+
+Los capítulos anteriores desarrollan modelos, geodésicas, áreas y teselaciones con ejemplos elementales. Anderson ofrece una exposición dedicada a la geometría hiperbólica \cite{anderson2005}; Greenberg desarrolla el contexto histórico y axiomático \cite{greenberg2008}; Stillwell presenta superficies y teselaciones \cite{stillwell1992}. Beardon y Ratcliffe sirven como referencias más avanzadas para grupos de transformaciones y variedades \cite{beardon1983,ratcliffe2006}.
+
+\begin{remark}
+La bibliografía es un punto de partida, no una lista exhaustiva. Al ampliar estas notas conviene anotar qué resultado se tomó de cada obra y añadir la cita junto al argumento correspondiente.
+\end{remark}

@@ -1,0 +1,49 @@
+\chapter{Longitud, distancia y geodésicas}
+\label{cap:longitud-distancia}
+
+Una métrica convierte velocidades coordenadas en longitudes geométricas. En los modelos anteriores el mismo principio aparece con expresiones diferentes. Este capítulo muestra cómo pasar de una curva parametrizada a una longitud, cómo reconocer una geodésica y cómo verificar cálculos con ejemplos.
+
+\section{Longitud de una curva}
+
+Sea \(\gamma(t)=(x(t),y(t))\), con \(a\leq t\leq b\), una curva a trozos suave en el semiplano superior. A partir de la métrica \cref{eq:metrica-semiplano}, su longitud hiperbólica es
+\begin{equation}
+  L_{\mathbb H}(\gamma)=\int_a^b
+  \frac{\sqrt{x'(t)^2+y'(t)^2}}{y(t)}\,dt.
+  \label{eq:longitud-semiplano}
+\end{equation}
+La expresión no cambia si se reparametriza la curva sin invertir su orientación. Para el disco se reemplaza el factor \(1/y\) por \(2/(1-|z|^2)\).
+
+\section{Un cálculo vertical}
+
+Considera el segmento vertical entre \(z_1=iy_1\) y \(z_2=iy_2\), con \(y_1,y_2>0\). Tomando \(x(t)=0\) y \(y(t)=t\) en \cref{eq:longitud-semiplano}, se obtiene
+\begin{equation}
+  d_{\mathbb H}(iy_1,iy_2)=\left|\int_{y_1}^{y_2}\frac{dt}{t}\right|
+  =\left|\log\frac{y_2}{y_1}\right|.
+  \label{eq:distancia-vertical}
+\end{equation}
+Por ejemplo, la distancia entre \(i\) y \(3i\) es \(\log 3\). El segmento vertical es geodésico, por lo que realiza la distancia mínima.
+
+\begin{example}[Distancia desde el centro del disco]
+En el disco, la distancia del origen al punto real \(r\in[0,1)\) es
+\[
+  d_{\mathbb D}(0,r)=\int_0^r\frac{2\,dt}{1-t^2}
+  =\log\frac{1+r}{1-r}=2\operatorname{artanh}(r).
+\]
+Para \(r=1/2\), esta distancia vale \(\log 3\), igual que la distancia entre \(i\) y \(3i\) calculada en \cref{eq:distancia-vertical}. Una isometría entre los modelos explica la coincidencia.
+\end{example}
+
+\section{La ecuación de las geodésicas}
+
+Una geodésica parametrizada a velocidad constante satisface la ecuación de Euler--Lagrange asociada a la energía de la métrica. Para \(ds^2=(dx^2+dy^2)/y^2\), la energía lagrangiana es
+\[
+  \mathcal L=\frac{x'^2+y'^2}{2y^2}.
+\]
+Como \(x\) no aparece explícitamente, el momento \(x'/y^2\) es constante. Al combinar esta primera integral con la condición de velocidad constante, se obtienen rectas verticales y circunferencias con centro en el eje real. La comprobación geométrica y el modelo del disco se estudian en los \cref{cap:semiplano-superior,cap:disco-poincare}.
+
+\begin{problem}
+Usa \cref{eq:distancia-vertical} para calcular la distancia entre \(2i\) y \(5i\). Explica por qué intercambiar los extremos no cambia el resultado.
+\end{problem}
+
+\begin{remark}
+La distancia entre puntos es el ínfimo de las longitudes de curvas que los unen. La fórmula de longitud asigna una longitud a cada curva, pero no afirma por sí sola que cualquier curva sea la más corta.
+\end{remark}

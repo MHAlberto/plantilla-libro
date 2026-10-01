@@ -38,6 +38,7 @@
 # Salidas temporales de compilaciones locales
 /build/
 /out/
+/output/
 
 # Documento generado
 /main.pdf

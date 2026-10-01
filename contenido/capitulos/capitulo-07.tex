@@ -1,0 +1,34 @@
+\chapter{Polígonos y teselaciones}
+\label{cap:teselaciones}
+
+En el plano euclidiano, los polígonos regulares que teselan el plano con copias idénticas son el triángulo equilátero, el cuadrado y el hexágono regular. La curvatura negativa permite muchas más posibilidades: hay teselaciones regulares hiperbólicas con símbolos de Schläfli \(\{p,q\}\), donde cada cara tiene \(p\) lados y \(q\) caras concurren en cada vértice \cite{stillwell1992}.
+
+\section{La condición angular}
+
+Un polígono regular hiperbólico de \(p\) lados tiene ángulo interior menor que el ángulo del polígono euclidiano regular correspondiente. Para que \(q\) copias se encuentren alrededor de cada vértice sin huecos ni solapamientos se requiere que el ángulo interior sea \(2\pi/q\). La condición de existencia de una teselación regular es
+\begin{equation}
+  \frac{1}{p}+\frac{1}{q}<\frac{1}{2},\qquad p,q\geq 3.
+  \label{eq:condicion-teselacion}
+\end{equation}
+La desigualdad expresa la posibilidad de cerrar una vuelta alrededor de cada vértice con ángulos menores que los euclidianos.
+
+\begin{example}[El mosaico \(\{3,7\}\)]
+La condición \cref{eq:condicion-teselacion} se cumple porque \(1/3+1/7=10/21<1/2\). Por tanto, existen teselaciones hiperbólicas con triángulos regulares y siete triángulos alrededor de cada vértice. En el disco de Poincaré las piezas se ven cada vez más pequeñas al acercarse a la circunferencia, aunque todas son congruentes en la métrica hiperbólica.
+\end{example}
+
+\section{Área de polígonos}
+
+Si un polígono geodésico tiene \(p\) lados y ángulos interiores \(\alpha_1,\ldots,\alpha_p\), su área es
+\begin{equation}
+  \operatorname{Area}(P)=(p-2)\pi-\sum_{j=1}^{p}\alpha_j.
+  \label{eq:area-poligono}
+\end{equation}
+Para una teselación regular, el defecto angular de cada cara coincide con la suma de los defectos distribuidos en sus vértices. Esta relación conecta la figura local con la curvatura negativa global.
+
+\begin{exercise}
+Verifica la condición \cref{eq:condicion-teselacion} para \(\{4,5\}\). ¿Qué informa \cref{eq:area-poligono} sobre el área de una cara regular de esa teselación?
+\end{exercise}
+
+\begin{remark}
+Los dibujos en el disco pueden hacer que las teselas parezcan deformadas, pero el modelo es conforme: conserva ángulos. Los lados curvos del dibujo son segmentos geodésicos de la métrica hiperbólica.
+\end{remark}

@@ -23,6 +23,7 @@ jobs:
             latexmk \
             texlive-bibtex-extra \
             texlive-fonts-recommended \
+            texlive-lang-spanish \
             texlive-latex-extra \
             texlive-luatex \
             texlive-xetex

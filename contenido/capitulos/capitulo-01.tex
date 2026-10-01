@@ -1,16 +1,85 @@
+\chapter{Primeros pasos: comandos y notación}
+\label{cap:comandos-basicos}
+
+Este capítulo presenta comandos básicos de LaTeX mientras introduce el lenguaje geométrico que se usará en los apuntes. La geometría hiperbólica estudia una geometría de curvatura negativa; servirá como hilo conductor y como ejemplo de cómo organizar un documento. Para una introducción sistemática, véanse \cite{greenberg2008,anderson2005}.
+
+\section{Estructura del texto}
+
+Los archivos se componen de comandos y texto. El signo de porcentaje inicia un comentario: el compilador ignora el resto de esa línea. Los comandos de sección llevan el texto del encabezado entre llaves.
+
+\begin{verbatim}
 \chapter{Título del capítulo}
-\label{cap:capitulo-01}
+\section{Título de la sección}
+\subsection{Título de la subsección}
+\end{verbatim}
 
-\begin{objetivos}
-% Escribe aquí los objetivos del capítulo o elimina este bloque.
-\end{objetivos}
+Para empezar un párrafo, deja una línea en blanco en el archivo. Usa \verb|\emph{texto}| para dar énfasis y \verb|\textbf{texto}| para negritas. Las listas se escriben con \verb|itemize| o \verb|enumerate|:
 
-\section{Primera sección}
-% Escribe aquí tus notas. Puedes dividir el contenido con subsecciones.
+\begin{itemize}
+  \item El disco de Poincaré es un modelo del plano hiperbólico.
+  \item Sus geodésicas parecen líneas o arcos de círculo en el dibujo.
+\end{itemize}
 
-\subsection{Subsección}
-% Añade ejemplos, figuras, tablas y referencias según las necesites.
+\section{Comandos matemáticos}
 
-% Bloques disponibles en notas.cls: definition, theorem, lemma, proposition,
-% corollary, example, exercise, problem, remark y notation.
-% Las figuras se pueden guardar en assets/ y añadir con \includegraphics.
+Las expresiones cortas se escriben entre \verb|\(| y \verb|\)|, por ejemplo, \(z\in\mathbb{C}\). Para una ecuación centrada y numerada usa el entorno \verb|equation|:
+
+\begin{equation}
+  \mathbb{D}=\{z\in\mathbb{C}:|z|<1\}.
+  \label{eq:disco-unitario}
+\end{equation}
+
+Algunos comandos frecuentes son \verb|\frac{a}{b}| para fracciones, \verb|\sqrt{x}| para raíces, \verb|\sum_{k=1}^{n}| para sumas y \verb|\mathbb{R}| para conjuntos numéricos. En el texto se vería, por ejemplo, \(\frac{x^2}{1-x^2}\).
+
+\section{Etiquetas y referencias}
+
+Pon una etiqueta única después del elemento que quieres citar. \verb|\ref| inserta su número y \verb|\cref| añade el nombre del tipo de elemento. Para la ecuación \cref{eq:disco-unitario}, la etiqueta es \verb|eq:disco-unitario|.
+
+\begin{verbatim}
+\section{Una sección}
+\label{sec:ejemplo}
+
+Consulta la \cref{sec:ejemplo} y la \eqref{eq:disco-unitario}.
+\end{verbatim}
+
+Usa nombres únicos y descriptivos, con prefijos como \verb|cap:|, \verb|sec:|, \verb|eq:| y \verb|fig:|. \verb|\label| no crea una referencia por sí solo: se combina con \verb|\ref|, \verb|\eqref| o \verb|\cref|.
+
+\section{Definiciones y resultados}
+
+La clase trae entornos opcionales para organizar conceptos y argumentos. Por ejemplo:
+
+\begin{definition}[Geodésica]
+Una geodésica es una curva que localmente minimiza la longitud entre puntos cercanos.
+\end{definition}
+
+\begin{example}
+En el modelo del disco, un diámetro es una geodésica.
+\end{example}
+
+Para otros usos consulta el \cref{ap:guia-uso}, donde se listan los entornos disponibles y se explica cómo añadir capítulos, figuras, citas e índices.
+
+\section{Figuras guardadas en la carpeta de recursos}
+
+Los dibujos TikZ se guardan en archivos separados dentro de \texttt{assets/tikz}. Así el capítulo conserva el texto y cada ilustración se puede mantener o reutilizar aparte. La \cref{fig:tikz-incrustado} se obtiene insertando un archivo externo:
+
+\begin{verbatim}
+\begin{figure}[htbp]
+  \centering
+  \input{assets/tikz/disco-poincare}
+  \caption{Diámetro y arco geodésico en el disco de Poincaré.}
+  \label{fig:ejemplo-en-codigo}
+\end{figure}
+\end{verbatim}
+
+\begin{figure}[htbp]
+  \centering
+  \input{assets/tikz/disco-poincare}
+  \caption{Un diámetro y un arco de círculo que corta ortogonalmente la frontera del disco.}
+  \label{fig:tikz-incrustado}
+\end{figure}
+
+\section{Citas e índice}
+
+Las fuentes viven en \texttt{bibliografia.bib}. Cita una clave con \verb|\cite{anderson2005}|, como en esta frase \cite{anderson2005}. Biber arma la lista de referencias durante la compilación.
+
+Para agregar una entrada al índice de palabras, usa \verb|\index{geodésica}| después de la palabra. Aquí se registra el \index{disco de Poincaré}disco de Poincaré como ejemplo.

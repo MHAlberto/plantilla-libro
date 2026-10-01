@@ -1,0 +1,38 @@
+\chapter{Curvatura, Gauss--Bonnet y superficies}
+\label{cap:curvatura-superficies}
+
+La geometría hiperbólica no se limita a los dibujos del disco y del semiplano. También aparece en superficies cuya curvatura es negativa y en cocientes del plano por grupos de isometrías. El teorema de Gauss--Bonnet relaciona curvatura local, área y topología \cite{ratcliffe2006,stillwell1992}.
+
+\section{Curvatura constante}
+
+En una superficie riemanniana, la curvatura gaussiana mide cómo se aparta la geometría infinitesimal de la euclidiana. En el plano hiperbólico normalizado vale \(K=-1\). Si se escala la métrica por un factor constante, cambia el valor numérico de la curvatura, aunque la geometría resultante sigue siendo de curvatura negativa constante.
+
+\section{Gauss--Bonnet}
+
+Para una región compacta \(R\) con borde geodésico a trozos, Gauss--Bonnet relaciona la curvatura interior y los ángulos exteriores:
+\begin{equation}
+  \int_R K\,dA+\sum_j(\pi-\alpha_j)=2\pi\chi(R).
+  \label{eq:gauss-bonnet-borde}
+\end{equation}
+Aquí \(\chi(R)\) es la característica de Euler y \(\alpha_j\) son los ángulos interiores en las esquinas. Para un disco topológico, \(\chi(R)=1\); si además \(K=-1\), la fórmula se reduce a la ley de área usada en el \cref{cap:triangulos-hiperbolicos}.
+
+\begin{theorem}[Área de una superficie hiperbólica cerrada]
+Si \(S\) es una superficie cerrada, orientable y de curvatura constante \(-1\), entonces
+\begin{equation}
+  \operatorname{Area}(S)=-2\pi\chi(S)=4\pi(g-1),
+  \label{eq:area-superficie-cerrada}
+\end{equation}
+donde \(g\geq 2\) es el género de \(S\).
+\end{theorem}
+
+\begin{proof}
+Gauss--Bonnet para una superficie cerrada afirma que \(\int_S K\,dA=2\pi\chi(S)\). Como \(K=-1\), el lado izquierdo es \(-\operatorname{Area}(S)\), así que el área es \(-2\pi\chi(S)\). Para una superficie orientable de género \(g\), \(\chi(S)=2-2g\), lo que da la segunda igualdad.
+\end{proof}
+
+\section{Construir superficies por identificación}
+
+Una manera de obtener una superficie cerrada es identificar lados de un polígono hiperbólico según un patrón prescrito. Los lados identificados heredan la misma longitud, y las condiciones angulares garantizan que alrededor de cada vértice la superficie no tenga una singularidad cónica. Para una explicación más completa de los cocientes y variedades, véase \cite{ratcliffe2006}.
+
+\begin{example}[Género dos]
+Una superficie cerrada de género \(2\) tiene \(\chi=-2\), de modo que \cref{eq:area-superficie-cerrada} da área \(4\pi\). El área depende del género y de la normalización de curvatura, no de la forma concreta del polígono usado para construirla.
+\end{example}

@@ -1,0 +1,80 @@
+\chapter{Guía de uso de la plantilla}
+\label{ap:guia-uso}
+
+Este apéndice resume el recorrido desde la edición de un archivo hasta el PDF final. Las secciones previas muestran ejemplos en contexto; aquí se reúnen los pasos para reutilizar la estructura con cualquier tema.
+
+\section{Cambiar los datos y la firma}
+
+En \texttt{main.tex}, edita \verb|\tituloapuntes| y, si hace falta, \verb|\subtituloapuntes|. Conserva \verb|\autorapuntes| como \textbf{M.H. Alberto}. La portada se compone en \texttt{contenido/portada.tex}; la clase editorial y la tipografía están en \texttt{notas.cls}.
+
+\section{Añadir y ordenar capítulos}
+
+Crea un archivo \texttt{.tex} dentro de \texttt{contenido/capitulos}. Empieza con \verb|\chapter{Título}| y agrega secciones con \verb|\section{Título}| y \verb|\subsection{Título}|. Después incorpora su ruta en \texttt{main.tex}, dentro de \verb|\mainmatter|. El orden de las líneas \verb|\input| fija el orden del documento.
+
+\section{Escribir texto y matemáticas}
+
+Separa los párrafos con una línea en blanco. Usa \verb|\emph{...}| para énfasis, \verb|\textbf{...}| para negritas, y los entornos \verb|itemize| y \verb|enumerate| para listas. Para expresiones matemáticas utiliza \verb|\(...\)| en línea, \verb|\[...\]| sin número o \verb|equation| con número.
+
+La clase incluye entornos opcionales como \verb|definition|, \verb|theorem|, \verb|lemma|, \verb|proposition|, \verb|corollary|, \verb|example|, \verb|exercise|, \verb|problem|, \verb|remark| y \verb|notation|. No es necesario usarlos en todos los apuntes.
+
+\section{Etiquetar y enlazar contenido}
+
+Añade una etiqueta única con \verb|\label{...}| y enlázala con \verb|\ref{...}|, \verb|\eqref{...}| o \verb|\cref{...}|. Prefijos útiles: \verb|cap:| para capítulos, \verb|sec:| para secciones, \verb|eq:| para ecuaciones y \verb|fig:| para figuras. No reutilices una etiqueta en dos lugares.
+
+\section{Añadir imágenes o figuras TikZ}
+
+Guarda archivos de imagen en \texttt{assets/}. Las figuras vectoriales hechas con TikZ pueden guardarse como archivos \texttt{.tex} en \texttt{assets/tikz/}; cada uno puede contener un entorno \verb|tikzpicture| completo. Inclúyelo en el capítulo así:
+
+\begin{verbatim}
+\begin{figure}[htbp]
+  \centering
+  \input{assets/tikz/mi-dibujo}
+  \caption{Descripción del dibujo.}
+  \label{fig:mi-dibujo}
+\end{figure}
+\end{verbatim}
+
+Para una imagen externa puedes usar \verb|\includegraphics| o la macro de clase \verb|\imagenfigura|. La ruta se escribe desde la raíz del repositorio. El comando \verb|\input| inserta el contenido de un archivo fuente; no crea por sí solo una figura numerada ni una leyenda.
+
+La macro de imagen recibe ancho opcional, archivo, pie y etiqueta:
+
+\begin{verbatim}
+\imagenfigura[0.7\textwidth]
+  {assets/fotografia.png}
+  {Descripción de la imagen.}
+  {fig:fotografia}
+\end{verbatim}
+
+\section{Comandos de figura de la clase}
+
+Además de los entornos estándar, \texttt{notas.cls} incluye macros opcionales. El entorno \verb|figuranotas| recibe posición, pie y etiqueta, en ese orden:
+
+\begin{verbatim}
+\begin{figuranotas}[htbp]{Un pie de figura.}{fig:etiqueta}
+  \input{assets/tikz/mi-dibujo}
+\end{figuranotas}
+\end{verbatim}
+
+\verb|\imagenfigura| acepta un ancho opcional; por defecto usa \verb|0.82\textwidth|. \verb|\semblanza| recibe imagen, nombre, descripción breve y texto. \verb|\bloqueimagenizquierda| y \verb|\bloqueimagenderecha| reciben imagen, título y texto, y permiten elegir el ancho de la imagen; por defecto usan \verb|0.28\linewidth|. Son utilidades editoriales; usa la figura estándar cuando quieras controlar el flotante o la posición con más precisión.
+
+\section{Citar fuentes y actualizar la bibliografía}
+
+Agrega cada obra a \texttt{bibliografia.bib} con una clave única, como \texttt{anderson2005}. Cítala en el capítulo con \verb|\cite{anderson2005}|. Biber prepara la bibliografía que se imprime al final; solo aparecerán las obras citadas.
+
+\section{Crear el índice de palabras}
+
+Inserta \verb|\index{término}| junto a la aparición que quieras indexar. \verb|\makeindex| en \texttt{main.tex} activa su generación y \verb|\printindex| lo coloca al final. \texttt{latexmk} llama a MakeIndex automáticamente.
+
+\section{Crear apéndices}
+
+En \texttt{main.tex}, después de los capítulos normales, escribe \verb|\appendix| y añade con \verb|\input| cada archivo de \texttt{contenido/apendices/}. A partir de ahí, \verb|\chapter| produce capítulos de apéndice con letras.
+
+\section{Compilar, limpiar y revisar}
+
+Desde la raíz del proyecto, genera el PDF con:
+
+\begin{verbatim}
+latexmk -xelatex -interaction=nonstopmode -file-line-error main.tex
+\end{verbatim}
+
+Si aparecen referencias sin resolver, ejecuta de nuevo \texttt{latexmk}; normalmente hace por sí mismo las pasadas adicionales. Usa \texttt{latexmk -C} para limpiar auxiliares sin borrar los fuentes. En GitHub, la pestaña Actions ejecuta la misma compilación y ofrece el PDF como artefacto descargable.
