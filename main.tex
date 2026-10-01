@@ -1,0 +1,39 @@
+% !TeX program = xelatex
+% Compilar: latexmk -xelatex -interaction=nonstopmode -file-line-error main.tex
+\documentclass{notas}
+
+% Cambia estos datos para cada conjunto de apuntes.
+\newcommand{\tituloapuntes}{Título de los apuntes}
+\newcommand{\subtituloapuntes}{}
+\newcommand{\autorapuntes}{M.H. Alberto}
+\title{\tituloapuntes}
+\author{\autorapuntes}
+\date{}
+
+\usepackage{imakeidx}
+\usepackage{etoolbox}
+\makeindex
+\addbibresource{bibliografia.bib}
+
+\begin{document}
+\frontmatter
+\input{contenido/portada}
+\input{contenido/dedicatoria}
+\input{contenido/prefacio}
+\tableofcontents
+\listoffigures
+\listoftables
+
+\mainmatter
+\input{contenido/capitulos/capitulo-01}
+% Duplica el archivo de capítulo y añade aquí su ruta para continuar.
+
+\backmatter
+\cleardoublepage
+\phantomsection
+\addcontentsline{toc}{chapter}{Índice de palabras}
+\printindex
+\cleardoublepage
+\phantomsection
+\printbibliography[heading=bibintoc,title={Referencias}]
+\end{document}

@@ -1,0 +1,39 @@
+name: Compilar apuntes
+
+on:
+  push:
+  pull_request:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Obtener el repositorio
+        uses: actions/checkout@v7
+
+      - name: Instalar XeLaTeX, Biber y paquetes
+        run: |
+          sudo apt-get update
+          sudo apt-get install --no-install-recommends -y \
+            biber \
+            latexmk \
+            texlive-bibtex-extra \
+            texlive-fonts-recommended \
+            texlive-latex-extra \
+            texlive-luatex \
+            texlive-xetex
+
+      - name: Compilar PDF
+        run: latexmk -xelatex -interaction=nonstopmode -file-line-error -halt-on-error main.tex
+
+      - name: Guardar el PDF compilado
+        uses: actions/upload-artifact@v6
+        with:
+          name: apuntes-pdf
+          path: main.pdf
+          if-no-files-found: error
+          retention-days: 14

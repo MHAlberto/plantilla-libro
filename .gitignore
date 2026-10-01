@@ -1,0 +1,49 @@
+# Archivos auxiliares de LaTeX
+*.4ct
+*.4tc
+*.acn
+*.acr
+*.alg
+*.aux
+*.auxlock
+*.bbl
+*.bcf
+*.blg
+*.dvi
+*.fdb_latexmk
+*.fls
+*.glg
+*.glo
+*.gls
+*.glsdefs
+*.idx
+*.ilg
+*.ind
+*.ist
+*.lof
+*.log
+*.lot
+*.nav
+*.out
+*.run.xml
+*.snm
+*.synctex.gz
+*.synctex(busy)
+*.thm
+*.toc
+*.vrb
+*.xdv
+*.xdy
+
+# Salidas temporales de compilaciones locales
+/build/
+/out/
+
+# Documento generado
+/main.pdf
+
+# Editores y sistema operativo
+*~
+*.bak
+.DS_Store
+Thumbs.db

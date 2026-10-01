@@ -1,0 +1,19 @@
+% Portada interior: los datos se editan en main.tex.
+\begingroup
+\thispagestyle{empty}
+\begin{center}
+\vspace*{1.6in}
+{\Large\itshape\tituloapuntes\par}
+\ifdefempty{\subtituloapuntes}{}{%
+  \vspace{0.25in}
+  {\normalsize\subtituloapuntes\par}
+}
+\vspace{0.6in}
+{\normalsize\autorapuntes\par}
+\vfill
+{\small Apuntes\par}
+\vspace{0.3in}
+\end{center}
+\endgroup
+\clearpage
+\thispagestyle{empty}\mbox{}\clearpage
