@@ -87,7 +87,13 @@ Agrega cada obra a \texttt{bibliografia.bib} con una clave única, como \texttt{
 
 \section{Crear el índice de palabras}
 
-Inserta \verb|\index{término}| junto a la aparición que quieras indexar. \verb|\makeindex| en \texttt{main.tex} activa su generación y \verb|\printindex| lo coloca al final. \texttt{latexmk} llama a MakeIndex automáticamente.
+Inserta \verb|\index{término}| junto a la aparición que quieras indexar. El término se añade al índice y permanece con el estilo normal del párrafo. Si quieres enfatizar esa aparición a la vez que la registras, usa \verb|\indexemph{término}|; por ejemplo:
+
+\begin{verbatim}
+La \indexemph{geodésica} une dos puntos del modelo.
+\end{verbatim}
+
+La palabra se verá en cursiva y aparecerá en el índice. \verb|\makeindex| en \texttt{main.tex} activa su generación y \verb|\printindex| lo coloca al final. \texttt{latexmk} llama a MakeIndex automáticamente.
 
 \section{Crear apéndices}
 
@@ -95,7 +101,13 @@ En \texttt{main.tex}, después de los capítulos normales, escribe \verb|\append
 
 \section{Compilar, limpiar y revisar}
 
-Desde la raíz del proyecto, genera el PDF con:
+Desde la raíz del proyecto en Windows, genera el PDF con:
+
+\begin{verbatim}
+.\compilar.ps1
+\end{verbatim}
+
+También puedes ejecutar el comando multiplataforma directamente:
 
 \begin{verbatim}
 latexmk -xelatex -interaction=nonstopmode -file-line-error main.tex

@@ -27,6 +27,7 @@ Después, edita el título en main.tex y reemplaza los archivos de contenido seg
     notas.cls                             Diseño editorial y herramientas LaTeX
     bibliografia.bib                      Fuentes bibliográficas en formato BibLaTeX
     .latexmkrc                            Configuración de compilación con XeLaTeX
+    compilar.ps1                          Compilación local con Biber e índice incluidos
     .gitignore                            Exclusión de archivos auxiliares y salidas
     .gitattributes                        Finales de línea para Windows y Linux
     .github/workflows/latex.yml           Compilación automática y artefacto PDF
@@ -67,7 +68,13 @@ TeX Live o MiKTeX pueden proporcionar estos programas. Verifica que estén dispo
 
 ## Compilar y limpiar
 
-Desde la raíz del proyecto, genera el PDF con:
+En Windows, ejecuta desde la raíz del proyecto:
+
+    .\compilar.ps1
+
+El script llama a `latexmk`, que coordina XeLaTeX, Biber, MakeIndex y las pasadas para actualizar referencias. Requiere que la distribución TeX y `latexmk` estén disponibles en `PATH`.
+
+También puedes ejecutar el comando directamente en Windows, macOS o Linux:
 
     latexmk -xelatex -interaction=nonstopmode -file-line-error main.tex
 
@@ -170,11 +177,11 @@ Las bibliotecas TikZ usadas por la clase están declaradas en notas.cls. Añade 
 
 ## Tablas e índice de palabras
 
-Para tablas simples, usa tabular y booktabs; consulta la tabla comparativa del capítulo 9. Marca un término para el índice con index:
+Para tablas simples, usa tabular y booktabs; consulta la tabla comparativa del capítulo 9. Marca un término para el índice con `\index`:
 
     La \index{geodésica}geodésica minimiza localmente la longitud.
 
-La clase y main.tex activan imakeidx. latexmk llama a MakeIndex y printindex coloca el resultado al final. Si no necesitas un índice, elimina makeindex y printindex de main.tex.
+La clase y main.tex activan imakeidx. Usa `\index{geodésica}` para registrar una palabra sin cambiar su estilo. Para imprimirla en cursiva y añadirla al índice con una sola instrucción, usa `\indexemph{geodésica}`. latexmk llama a MakeIndex y `\printindex` coloca el resultado al final. Si no necesitas un índice, elimina `\makeindex` y `\printindex` de main.tex.
 
 La clase también ofrece figuranotas para envolver contenido en una figura con pie y etiqueta, semblanza para un retrato con texto, y bloqueimagenizquierda y bloqueimagenderecha para componer imagen y texto en columnas. El apéndice A documenta los argumentos de cada macro. Son opcionales: las figuras y minipáginas estándar de LaTeX siguen disponibles.
 
@@ -215,6 +222,7 @@ Git conserva los fuentes .tex y .bib, la clase, los dibujos y la configuración.
 
 - No se encuentra xelatex, latexmk, biber o makeindex: instala los ejecutables de la distribución TeX y actualiza PATH.
 - No aparece la bibliografía o una cita: confirma que la clave de cite coincide exactamente con bibliografia.bib y recompila con latexmk; una sola pasada de XeLaTeX no ejecuta Biber.
+- `compilar.ps1` indica que falta `latexmk`: confirma que MiKTeX o TeX Live está instalado y que su carpeta de ejecutables está en `PATH`; también puedes descargar el artefacto PDF de GitHub Actions.
 - Una referencia muestra ?? o un capítulo no entra al índice general: revisa label, ref y el orden de compilación.
 - Falta una figura: confirma el nombre, extensión y ruta desde la raíz del proyecto.
 - Una figura TikZ falla: comprueba llaves y puntos y coma; cada comando draw o node termina con punto y coma.
