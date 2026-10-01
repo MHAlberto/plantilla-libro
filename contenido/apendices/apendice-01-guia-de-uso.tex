@@ -5,7 +5,15 @@ Este apéndice resume el recorrido desde la edición de un archivo hasta el PDF 
 
 \section{Cambiar los datos y la firma}
 
-En \texttt{main.tex}, edita \verb|\tituloapuntes| y, si hace falta, \verb|\subtituloapuntes|. Conserva \verb|\autorapuntes| como \textbf{M.H. Alberto}. La portada se compone en \texttt{contenido/portada.tex}; la clase editorial y la tipografía están en \texttt{notas.cls}.
+En \texttt{main.tex}, cambia el título y, si quieres, el subtítulo. Conserva M.H. Alberto como firma. Las macros de la portada son:
+
+\begin{itemize}
+  \item \verb|\tituloapuntes|: título principal.
+  \item \verb|\subtituloapuntes|: subtítulo, que puede dejarse vacío.
+  \item \verb|\autorapuntes|: firma del autor.
+\end{itemize}
+
+La portada se compone en \texttt{contenido/portada.tex}; la clase editorial y la tipografía están en \texttt{notas.cls}.
 
 \section{Añadir y ordenar capítulos}
 
@@ -15,7 +23,14 @@ Crea un archivo \texttt{.tex} dentro de \texttt{contenido/capitulos}. Empieza co
 
 Separa los párrafos con una línea en blanco. Usa \verb|\emph{...}| para énfasis, \verb|\textbf{...}| para negritas, y los entornos \verb|itemize| y \verb|enumerate| para listas. Para expresiones matemáticas utiliza \verb|\(...\)| en línea, \verb|\[...\]| sin número o \verb|equation| con número.
 
-La clase incluye entornos opcionales como \verb|definition|, \verb|theorem|, \verb|lemma|, \verb|proposition|, \verb|corollary|, \verb|example|, \verb|exercise|, \verb|problem|, \verb|remark| y \verb|notation|. No es necesario usarlos en todos los apuntes.
+La clase incluye entornos opcionales. Úsalos solo cuando ayuden a organizar las notas:
+
+\begin{itemize}
+  \item Resultados: \verb|theorem|, \verb|lemma|, \verb|proposition|, \verb|corollary| y \verb|conjecture|.
+  \item Conceptos: \verb|definition|, \verb|notation| y \verb|axiom|.
+  \item Práctica: \verb|example|, \verb|exercise| y \verb|problem|.
+  \item Comentarios: \verb|remark|.
+\end{itemize}
 
 \section{Etiquetar y enlazar contenido}
 
@@ -47,7 +62,7 @@ La macro de imagen recibe ancho opcional, archivo, pie y etiqueta:
 
 \section{Comandos de figura de la clase}
 
-Además de los entornos estándar, \texttt{notas.cls} incluye macros opcionales. El entorno \verb|figuranotas| recibe posición, pie y etiqueta, en ese orden:
+\texttt{notas.cls} incluye el entorno opcional \verb|figuranotas|. Recibe posición, pie y etiqueta, en ese orden:
 
 \begin{verbatim}
 \begin{figuranotas}[htbp]{Un pie de figura.}{fig:etiqueta}
@@ -55,7 +70,16 @@ Además de los entornos estándar, \texttt{notas.cls} incluye macros opcionales.
 \end{figuranotas}
 \end{verbatim}
 
-\verb|\imagenfigura| acepta un ancho opcional; por defecto usa \verb|0.82\textwidth|. \verb|\semblanza| recibe imagen, nombre, descripción breve y texto. \verb|\bloqueimagenizquierda| y \verb|\bloqueimagenderecha| reciben imagen, título y texto, y permiten elegir el ancho de la imagen; por defecto usan \verb|0.28\linewidth|. Son utilidades editoriales; usa la figura estándar cuando quieras controlar el flotante o la posición con más precisión.
+Las otras macros opcionales son:
+
+\begin{itemize}
+  \item \verb|\imagenfigura| inserta una imagen con pie y etiqueta; su ancho predeterminado es \verb|0.82\textwidth|.
+  \item \verb|\semblanza| recibe imagen, nombre, descripción breve y texto.
+  \item \verb|\bloqueimagenizquierda| coloca imagen a la izquierda y texto a la derecha.
+  \item \verb|\bloqueimagenderecha| coloca texto a la izquierda y una imagen a la derecha.
+\end{itemize}
+
+Los bloques laterales aceptan ancho opcional para la imagen y usan \verb|0.28\linewidth| por defecto. Usa una figura estándar cuando necesites controlar su posición con más precisión.
 
 \section{Citar fuentes y actualizar la bibliografía}
 

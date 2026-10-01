@@ -216,6 +216,21 @@
 ]{hyperref}
 \RequirePackage{bookmark}
 \RequirePackage[capitalise,spanish]{cleveref}
+% Cada ambiente comparte el contador theorem; el ancla PDF también debe
+% incluir la sección para que no se repitan destinos entre capítulos.
+\providecommand*{\theHtheorem}{}
+\renewcommand*{\theHtheorem}{\theHsection.\arabic{theorem}}
+\providecommand*{\theHlemma}{}\renewcommand*{\theHlemma}{\theHtheorem}
+\providecommand*{\theHproposition}{}\renewcommand*{\theHproposition}{\theHtheorem}
+\providecommand*{\theHcorollary}{}\renewcommand*{\theHcorollary}{\theHtheorem}
+\providecommand*{\theHconjecture}{}\renewcommand*{\theHconjecture}{\theHtheorem}
+\providecommand*{\theHaxiom}{}\renewcommand*{\theHaxiom}{\theHtheorem}
+\providecommand*{\theHdefinition}{}\renewcommand*{\theHdefinition}{\theHtheorem}
+\providecommand*{\theHexample}{}\renewcommand*{\theHexample}{\theHtheorem}
+\providecommand*{\theHexercise}{}\renewcommand*{\theHexercise}{\theHtheorem}
+\providecommand*{\theHproblem}{}\renewcommand*{\theHproblem}{\theHtheorem}
+\providecommand*{\theHremark}{}\renewcommand*{\theHremark}{\theHtheorem}
+\providecommand*{\theHnotation}{}\renewcommand*{\theHnotation}{\theHtheorem}
 \crefname{theorem}{teorema}{teoremas}
 \Crefname{theorem}{Teorema}{Teoremas}
 \crefname{lemma}{lema}{lemas}
