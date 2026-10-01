@@ -73,6 +73,8 @@ Desde la raíz del proyecto, genera el PDF con:
 
 El resultado local es main.pdf. latexmk vuelve a ejecutar XeLaTeX, Biber y MakeIndex cuando hacen falta y actualiza las referencias cruzadas.
 
+No compiles solo con xelatex main.tex para la versión final: esa orden ejecuta una pasada de XeLaTeX, pero no procesa por sí sola la bibliografía con Biber ni el índice con MakeIndex. Usa latexmk como en el comando anterior. En un editor que solo haga una pasada, ejecuta latexmk desde una terminal o descarga el artefacto apuntes-pdf generado en GitHub Actions.
+
 Para quitar los archivos auxiliares sin borrar los fuentes:
 
     latexmk -C
@@ -212,7 +214,7 @@ Git conserva los fuentes .tex y .bib, la clase, los dibujos y la configuración.
 ## Diagnóstico rápido
 
 - No se encuentra xelatex, latexmk, biber o makeindex: instala los ejecutables de la distribución TeX y actualiza PATH.
-- No aparece una cita: confirma que clave en cite coincide exactamente con la entrada BibTeX y recompila con latexmk.
+- No aparece la bibliografía o una cita: confirma que la clave de cite coincide exactamente con bibliografia.bib y recompila con latexmk; una sola pasada de XeLaTeX no ejecuta Biber.
 - Una referencia muestra ?? o un capítulo no entra al índice general: revisa label, ref y el orden de compilación.
 - Falta una figura: confirma el nombre, extensión y ruta desde la raíz del proyecto.
 - Una figura TikZ falla: comprueba llaves y puntos y coma; cada comando draw o node termina con punto y coma.
